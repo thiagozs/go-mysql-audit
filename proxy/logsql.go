@@ -113,7 +113,7 @@ func sql_escape(s string) string {
 	return string(desc[0:j])
 }
 
-func proxyLog(src, dst net.Conn, verbose bool) {
+func proxyLog(src, dst net.Conn, verbose bool) error {
 	buffer := make([]byte, 4096)
 	var sqlInfo query
 	sqlInfo.client, sqlInfo.cport = ipPortFromNetAddr(src.RemoteAddr().String())
@@ -123,7 +123,7 @@ func proxyLog(src, dst net.Conn, verbose bool) {
 	for {
 		n, err := src.Read(buffer)
 		if err != nil {
-			return
+			return err
 		}
 		if n >= 5 {
 			var verboseStr string
@@ -179,7 +179,7 @@ func proxyLog(src, dst net.Conn, verbose bool) {
 
 		_, err = dst.Write(buffer[0:n])
 		if err != nil {
-			return
+			return err
 		}
 	}
 }

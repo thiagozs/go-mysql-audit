@@ -61,7 +61,8 @@ func (r *Proxy) Start(port string) error {
 }
 
 func (r *Proxy) handle(conn net.Conn, connectionId uint64, enableDecoding bool) {
-	connection := NewConnection(r.host, r.port, conn, connectionId, enableDecoding)
+	connection := NewConnection(r.host, r.port, conn,
+		connectionId, enableDecoding, r.verbose)
 	err := connection.Handle()
 	if err != nil {
 		log.Printf("Error handling proxy connection: %s", err.Error())

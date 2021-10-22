@@ -9,13 +9,15 @@ import (
 	"github.com/thiagozs/go-mysql-audit/protocol"
 )
 
-func NewConnection(host string, port string, conn net.Conn, id uint64, enableDecoding bool) *Connection {
+func NewConnection(host string, port string, conn net.Conn,
+	id uint64, enableDecoding, verbose bool) *Connection {
 	return &Connection{
 		host:           host,
 		port:           port,
 		conn:           conn,
 		id:             id,
 		enableDecoding: enableDecoding,
+		verbose:        verbose,
 	}
 }
 
@@ -25,6 +27,7 @@ type Connection struct {
 	host           string
 	port           string
 	enableDecoding bool
+	verbose        bool
 }
 
 func (r *Connection) Handle() error {
@@ -82,9 +85,16 @@ func (r *Connection) Handle() error {
 		log.Printf("Connection closed. Bytes copied: [%d] %d", r.id, copied)
 	}()
 
-	copied, err := io.Copy(r.conn, mysql)
-	if err != nil {
-		log.Printf("Connection error: [%d] %s", r.id, err.Error())
+	var copied int64
+	if r.verbose {
+		if err := proxyLog(r.conn, mysql, r.verbose); err != nil {
+			log.Printf("Connection error: [%d] %s", r.id, err.Error())
+		}
+	} else {
+		copied, err = io.Copy(r.conn, mysql)
+		if err != nil {
+			log.Printf("Connection error: [%d] %s", r.id, err.Error())
+		}
 	}
 
 	log.Printf("Connection closed. Bytes copied: [%d] %d", r.id, copied)
