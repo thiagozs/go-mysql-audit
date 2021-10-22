@@ -1,4 +1,4 @@
-module github.com/thiagozs/go-proxy-audit
+module github.com/thiagozs/go-mysql-audit
 
 go 1.17
 
