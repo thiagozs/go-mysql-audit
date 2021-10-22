@@ -6,13 +6,13 @@ import (
 	"os"
 	"os/signal"
 
-	px "github.com/thiagozs/go-proxy-audit"
+	"github.com/thiagozs/go-mysql-audit/proxy"
 )
 
 func main() {
 	ctx, cancel := context.WithCancel(context.Background())
-	proxy := px.NewProxy(ctx, "127.0.0.1", ":3306", true)
-	proxy.EnableDecoding()
+	px := proxy.NewProxy(ctx, "127.0.0.1", ":3306", true)
+	px.EnableDecoding()
 
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt)

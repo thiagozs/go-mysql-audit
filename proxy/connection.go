@@ -2,10 +2,11 @@ package proxy
 
 import (
 	"fmt"
-	"go-mysql-proxy/protocol"
 	"io"
 	"log"
 	"net"
+
+	"github.com/thiagozs/go-mysql-audit/protocol"
 )
 
 func NewConnection(host string, port string, conn net.Conn, id uint64, enableDecoding bool) *Connection {

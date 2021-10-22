@@ -1,5 +1,5 @@
 module github.com/thiagozs/go-proxy-audit
 
-go 1.13
+go 1.17
 
-require github.com/go-sql-driver/mysql v1.5.0
+require github.com/go-sql-driver/mysql v1.6.0 // indirect
