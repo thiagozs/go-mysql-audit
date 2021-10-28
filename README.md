@@ -1,28 +1,50 @@
-# Simple mysql audit
+#### MySQL Proxy Audit
 
-The main goal is to learn the MySQL Protocol by implementing it.
+# go-mysql-audit - A very simple mysql proxy.
 
-The plan:
-- [x] Implement TCP Proxy as a starting point
-- [ ] Implement state machine
-- [x] Implement query/query data buffering
-- [ ] Implement plugins
+* Deep mysql connection alive
+* Reuse authorized connection
 
-Packets decode/encode todo:
-- [x] Handshake Packet
-- [ ] Authorization Packet
+## Helpers and commands
 
+* Build a binary file
 
-go version go1.7
-
-To try it, just clone, and run:
-
+```sh
+$: make build
 ```
-go run main.go
+
+* Helper commands
+
+```sh
+$:./paudit --help
+Run proxy server for mysql
+
+Usage:
+  paudit [command]
+
+Available Commands:
+  completion  generate the autocompletion script for the specified shell
+  help        Help about any command
+  runserver   Run proxy for mysql
+
+Flags:
+  -h, --help   help for proxy
+
+Use "paudit [command] --help" for more information about a command.
+```
+
+* Running proxy server
+
+```sh
+$:./paudit runserver --mysql=3306 --proxy=33060 --debug=false
+2021/10/26 14:06:43 [SERVER] Proxy MySQL Audit
+2021/10/26 14:06:43 [SERVER] version: beta
+2021/10/26 14:06:43 [SERVER] build  : 38dc57f
+2021/10/26 14:06:43 [SERVER] proxy server on host=33060, mysql server listening host=3306...
 ```
 
 ## Versioning and license
 
-Our version numbers follow the [semantic versioning specification](http://semver.org/). You can see the available versions by checking the [tags on this repository](https://github.com/thiagozs/go-mysql-audit/tags). For more details about our license model, please take a look at the [LICENSE](LICENSE) file.
+Our version numbers follow the [semantic versioning specification](http://semver.org/). You can see the available versions by checking the [tags on this repository](https://github.com/mercadobitcoin/go-proxy-audit/tags). For more details about our license model, please take a look at the [LICENSE](LICENSE) file.
 
-2021, thiagozs
+**2021**, thiagozs

@@ -1,2 +1,6 @@
+paudit
+
+.env
+.envrc
+
 .DS_Store
-.idea/
