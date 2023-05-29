@@ -9,9 +9,9 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/mercadobitcoin/go-proxy-audit/cfg"
-	"github.com/mercadobitcoin/go-proxy-audit/proxy"
 	"github.com/spf13/cobra"
+	"github.com/thiagozs/go-proxy-audit/cfg"
+	"github.com/thiagozs/go-proxy-audit/proxy"
 )
 
 var runserverCmd = &cobra.Command{

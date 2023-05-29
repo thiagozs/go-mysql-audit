@@ -5,8 +5,8 @@ import (
 	"os"
 
 	"github.com/google/uuid"
-	"github.com/mercadobitcoin/go-proxy-audit/utils"
 	"github.com/rs/zerolog"
+	"github.com/thiagozs/go-proxy-audit/utils"
 )
 
 type ProxyConn struct {

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/mercadobitcoin/go-proxy-audit/utils"
+	"github.com/thiagozs/go-proxy-audit/utils"
 )
 
 func main() {

@@ -1,4 +1,4 @@
-module github.com/mercadobitcoin/go-proxy-audit
+module github.com/thiagozs/go-proxy-audit
 
 go 1.7
 

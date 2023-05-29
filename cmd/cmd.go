@@ -5,9 +5,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/mercadobitcoin/go-proxy-audit/cfg"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"github.com/thiagozs/go-proxy-audit/cfg"
 )
 
 var (

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/mercadobitcoin/go-proxy-audit/cmd"
+	"github.com/thiagozs/go-proxy-audit/cmd"
 )
 
 var Version = "beta"
